@@ -1,0 +1,48 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+ヘッダー
+
+------------------------------------------------------------ */
+
+.c-header {
+    padding-bottom: $space-xxxl;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include mq767{
+        padding-bottom: $space-xxl;
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: $space-xxs;
+
+            @include mq767{
+                row-gap: $space-xs;
+            }
+
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: $space-xxs;
+
+                    svg{
+                        width: 0.7rem;
+                        height: 0.7rem;
+                        fill: $color-text-primary;
+                    }
+                }
+
+                h1 {
+                    color: $color-text-secondary;
+                }
+            }
+        }
+    }
+}

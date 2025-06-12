@@ -1,0 +1,69 @@
+/* ----------------------------------------
+ブレイクポイント
+---------------------------------------- */
+$mq1920: 1920px;
+$mq1620: 1620px;
+$mq1440: 1440px;
+$mq1200: 1200px;
+$mq1024: 1024px;
+$mq767: 767px;
+
+/* ----------------------------------------
+Color Tokens
+---------------------------------------- */
+$color-bg-default: #FFFFFF;
+$color-surface: #F8F8F8;
+
+/* Text Colors */
+$color-text-primary: #000;
+$color-text-secondary: #ABABAB;
+
+/* ----------------------------------------
+Typography Tokens
+---------------------------------------- */
+/* Font Sizes */
+$fz-base: 1.3rem;
+$fz-jp-base: 1.2rem;
+$fz-sm: 1rem;
+$fz-lg: 1.4rem;
+
+
+/* Font Weights */
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+/* Line Heights */
+$lh-tight: 1.2;
+$lh-base: normal;
+$lh-loose: 1.8;
+
+/* Letter Spacings */
+$ls-tight: -0.02em;
+$ls-normal: 0;
+$ls-wide: 0.02em;
+
+/* ----------------------------------------
+Spacing Tokens
+---------------------------------------- */
+$space-xxs: 0.4rem;
+$space-xs: 0.8rem;
+$space-sm: 1.2rem;
+$space-md: 1.6rem;
+$space-lg: 2.4rem;
+$space-xl: 3.2rem;
+$space-xxl: 4.8rem;
+$space-xxxl: 8rem;
+
+/* ----------------------------------------
+Radius Tokens
+---------------------------------------- */
+$radius-sm: 0.4rem;
+$radius-md: 0.8rem;
+$radius-lg: 1.6rem;
+
+/* ----------------------------------------
+Shadow Tokens
+---------------------------------------- */
+$shadow-sm: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+$shadow-md: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.15);

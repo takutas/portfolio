@@ -1,0 +1,43 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+Profile
+
+------------------------------------------------------------ */
+
+.profile {
+    max-width: 40rem;
+    
+    &__top{
+        padding-bottom: $space-xl;
+
+        h2{
+            letter-spacing: $ls-wide;
+        }
+    }
+
+    &__contact{
+        padding-bottom: $space-xl;
+    }
+    
+    &__image{
+        width: 17.8rem;
+        height: auto;
+    }
+
+    &__desc{
+        padding: $space-xl 0 $space-xxxl;
+        font-size: $fz-jp-base;
+        line-height: $lh-loose;
+        display: flex;
+        flex-direction: column;
+        row-gap: $space-sm;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        row-gap: $space-xs;
+    }
+}

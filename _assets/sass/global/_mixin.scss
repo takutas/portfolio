@@ -1,0 +1,51 @@
+@use "setting" as *;
+
+@mixin mq1920 {
+    @media screen and (max-width: ($mq1920)) {
+        @content;
+    }
+}
+
+@mixin mq1620 {
+    @media screen and (max-width: ($mq1620)) {
+        @content;
+    }
+}
+
+@mixin mq1440 {
+    @media screen and (max-width: ($mq1440)) {
+        @content;
+    }
+}
+
+@mixin mq1200 {
+    @media screen and (max-width: ($mq1200)) {
+        @content;
+    }
+}
+
+@mixin mq1024 {
+    @media screen and (max-width: ($mq1024)) {
+        @content;
+    }
+}
+
+@mixin mq767 {
+    @media screen and (orientation: portrait) and (max-width: ($mq767)) {
+        @content;
+    }
+}
+
+// 印刷用
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
+// ホバー
+@mixin hover {
+    @media (hover: hover) {
+        @content;
+    }
+}

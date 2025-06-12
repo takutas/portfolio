@@ -1,0 +1,79 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+Reset
+
+------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: sans-serif;
+    height: 100%;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+input,
+textarea,
+button {
+    border: none;
+    appearance: none;
+    background-color: transparent;
+    outline: none;
+
+    &:focus-visible {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}

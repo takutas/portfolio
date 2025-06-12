@@ -1,0 +1,35 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+フッター
+
+------------------------------------------------------------ */
+
+.c-footer {
+    padding-top: $space-md;
+
+    &__nav {
+        display: flex;
+        justify-content: flex-end;
+
+        ul {
+            display: flex;
+            column-gap: $space-xxs;
+
+            li {
+                a {
+                    color: $color-text-secondary;
+                    display: block;
+                    padding: 0 $space-xs;
+
+                    @include hover {
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
