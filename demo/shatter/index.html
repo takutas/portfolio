@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Shatter Effect</title>
+	<style>
+		body {
+			margin: 0;
+			background: #111;
+			color: white;
+			font-family: sans-serif;
+			height: 300vh;
+			overflow-x: hidden;
+		}
+
+		.word {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			gap: 0.5rem;
+			font-size: 3rem;
+			font-weight: bold;
+			z-index: 10;
+			pointer-events: none;
+		}
+
+		.word span {
+			display: inline-block;
+			will-change: transform, opacity;
+		}
+
+		.circle {
+			width: 30vw;
+			aspect-ratio: 1;
+			background-color: #FFF;
+			border-radius: 50%;
+			position: relative;
+			top: 100vh;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 1;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="word" id="scatterWord">
+		<span>S</span><span>H</span><span>A</span><span>T</span><span>T</span><span>E</span><span>R</span>
+	</div>
+
+	<div class="circle"></div>
+
+	<!-- GSAP -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+	<script>
+		const letters = document.querySelectorAll('#scatterWord span');
+		let lastScrollY = window.scrollY;
+		let lastTimestamp = performance.now();
+		let scrollVelocity = 0;
+
+		// 初期状態にリセット
+		window.addEventListener("DOMContentLoaded", () => {
+			gsap.set(".circle", {
+				y: "0vh",
+				opacity: 1
+			});
+			letters.forEach(letter => {
+				gsap.set(letter, {
+					x: 0,
+					y: 0,
+					rotation: 0,
+					opacity: 1
+				});
+			});
+		});
+
+		// スクロール速度の取得
+		function updateScrollVelocity() {
+			const now = performance.now();
+			const deltaY = window.scrollY - lastScrollY;
+			const deltaTime = now - lastTimestamp;
+			scrollVelocity = Math.abs(deltaY / deltaTime) * 1000;
+			lastScrollY = window.scrollY;
+			lastTimestamp = now;
+		}
+		window.addEventListener("scroll", updateScrollVelocity);
+
+		ScrollTrigger.create({
+			trigger: ".circle",
+			start: "top center",
+			end: "bottom center",
+			scrub: false,
+			onEnter: () => {
+				gsap.to("body", { overflowY: "hidden" });
+
+				const maxDistance = Math.min(600, scrollVelocity * 2);
+
+				letters.forEach((letter, index) => {
+					if (index === 3 || index === 4) {
+						const tl = gsap.timeline();
+
+						// 落下
+						tl.to(letter, {
+							y: 100,
+							x: gsap.utils.random(-15, 15),
+							rotation: gsap.utils.random(-20, 20),
+							duration: 0.5,
+							ease: "power2.in"
+						})
+
+							// バウンド 1回目
+							.to(letter, {
+								y: 60,
+								duration: 0.25,
+								ease: "power2.out"
+							})
+
+							// バウンド 2回目（やや小さめ）
+							.to(letter, {
+								y: 80,
+								duration: 0.2,
+								ease: "power1.in"
+							})
+
+							.to(letter, {
+								y: 68,
+								duration: 0.15,
+								ease: "power1.out"
+							})
+
+							// バウンド 3回目（さらに小さく）
+							.to(letter, {
+								y: 75,
+								duration: 0.12,
+								ease: "power1.in"
+							})
+
+							.to(letter, {
+								y: 70,
+								duration: 0.1,
+								ease: "power1.out"
+							});
+					} else {
+						// 他の文字は飛び散る
+						gsap.to(letter, {
+							x: () => gsap.utils.random(-maxDistance, maxDistance),
+							y: () => gsap.utils.random(-maxDistance, maxDistance),
+							rotation: () => gsap.utils.random(-180, 180),
+							opacity: 0,
+							duration: 1.2,
+							ease: "power4.out"
+						});
+					}
+				});
+
+				// circle を上に進めながらフェードアウト
+				gsap.to(".circle", {
+					y: "-150vh",
+					opacity: 0,
+					duration: 1.5,
+					ease: "power2.out"
+				});
+
+				setTimeout(() => {
+					gsap.to("body", { overflowY: "auto" });
+				}, 1600);
+			}
+		});
+	</script>
+</body>
+
+</html>
