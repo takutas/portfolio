@@ -22,22 +22,25 @@ body {
     font-size: $fz-base;
     line-height: $lh-base;
     font-family: "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif;
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        Meiryo,
+        sans-serif;
 
-    &.open{
+    &.open {
         overflow: hidden;
     }
 }
 
-#wrap-all{
+#wrap-all {
     padding: $space-md;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.svg_symbol{
+.svg_symbol {
     display: none;
 }
 
@@ -48,7 +51,8 @@ textarea {
     transition: all 0.3s ease;
 }
 
-img {
+img,
+video {
     max-width: 100%;
     height: auto;
     display: block;

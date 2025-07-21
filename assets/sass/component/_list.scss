@@ -1,0 +1,33 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+リスト
+
+------------------------------------------------------------ */
+
+.listCol1{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: $space-xl;
+}
+
+.listCol2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-sm;
+
+    @include mq767{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.listCol4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-sm;
+
+    @include mq767{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Slot Typing with Pink Glow Takumi Tanigawa Portfolio</title>
+	<link rel="canonical" href="https://takutas.github.io/portfolio-site/works/work02.html" />
+	<meta name="description" content="Slot Typing with Pink Glow Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
+	<!-- Open Graph -->
+	<meta property="og:title" content="Slot Typing with Pink Glow Takumi Tanigawa Portfolio">
+	<meta property="og:description" content="Slot Typing with Pink Glow Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
+	<meta property="og:url" content="https://takutas.github.io/portfolio-site/works/work02.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Takumi Tanigawa Portfolio">
+	<meta property="og:locale" content="ja_JP">
+	<!-- <meta property="og:image" content="https://takutas.github.io/portfolio-site/assets/img/ogp.jpg"> -->
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@takumi00060421">
+	<!-- Stylesheet -->
+	<link href="/portfolio/assets/css/style.min.css" media="all" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrap-all">
+		<header class="c-header">
+			<nav class="c-header__nav" aria-label="グローバルナビゲーション">
+				<ul>
+					<li>
+						<h1>Works</h1>
+					</li>
+					<li><a class="linkTxt01" href="https://qiita.com/takutas" target="_blank"
+							rel="noopener">Journal<svg>
+								<use href="#ico_tab01"></use>
+							</svg></a></li>
+					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
+					<li><a class="linkTxt01" href="/portfolio/components/">Components</a></li>
+				</ul>
+			</nav>
+			<p>&copy;Takumi.T 2025</p>
+		</header>
+
+		<main>
+			<div class="worksDetail">
+				<p class="backList">
+					<a href="/portfolio/">←View All</a>
+				</p>
+				<div class="pager">
+					<p><a href="work03.html">←Prev</a></p>
+					<p><a href="work01.html">Next→</a></p>
+				</div>
+				<video class="worksDetail__video" autoplay muted loop playsinline>
+					<source src="/portfolio/assets/video/work02.webm" type="video/webm">
+					Your browser does not support the video tag.
+				</video>
+				<h2>Slot Typing with Pink Glow</h2>
+				<div class="worksDetail__desc">
+					<p>映画「Harmony」の冒頭に現れる印象的なタイプエフェクトがモチーフ</p>
+					<p>スロットマシンのような演出で文字が一文字ずつ確定していくタイピングアニメーションを実装。最終文字が確定すると全体がふわりと消えていく一連の演出により、**「出現」→「余韻」→「消失」**という視覚の物語性を意識しました。</p>
+					<p>全角・半角文字が混在する構成に対しては、各文字をラップする char-wrapper に data-type を付与し、それぞれに異なる幅・行間・文字サイズを動的に割り当てることで、整列と視認性を両立しています。</p>
+				</div>
+				<div class="worksDetail__info">
+					<div>
+						<h3 class="heading01">Feature Tech</h3>
+						<p>Vanilla JavaScript / CSS Animation / Unicode-aware Layout</p>
+					</div>
+					<div>
+						<p>#HTML, #CSS, #JavaScript, #SlotEffect, #Typography</p>
+					</div>
+				</div>
+				<p class="worksDetail__external">
+					<a href="../demo/typing-anim/" target="_blank">Demo Syte</a>
+				</p>
+			</div>
+		</main>
+
+		<footer class="c-footer" id="footer">
+			<nav class="c-footer__nav" aria-label="SNS">
+				<ul>
+					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X</a>
+					</li>
+					<li><a class="linkTxt01" href="https://www.instagram.com/taq_tani/" target="_blank"
+							rel="noopener">Instagram</a></li>
+				</ul>
+			</nav>
+		</footer>
+
+		<script src="/portfolio/assets/js/script.js" defer></script>
+		<svg class="svg_symbol">
+			<symbol id="ico_tab01" viewBox="0 0 7 7">
+				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z" />
+				<path d="M1 1V6H6V7H0V1H1Z" />
+			</symbol>
+		</svg>
+	</div><!--wrap_all-->
+</body>
+
+</html>

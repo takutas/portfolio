@@ -36,77 +36,72 @@
 								<use href="#ico_tab01"></use>
 							</svg></a></li>
 					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
+					<li><a class="linkTxt01" href="/portfolio/components/">Components</a></li>
 				</ul>
 			</nav>
 			<p>&copy;Takumi.T 2025</p>
 		</header>
 
 		<main>
-			<p style="height: calc(100dvh - 20rem); display:flex; justify-content: center; align-items: center;">Coming
-				soon...</p>
-			<!-- <ul class="worksList">
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
+			<ul class="listCol4">
+				<li class="listCol4__item">
+					<a href="works/work03.html">
+						<video class="hover-video" muted loop playsinline>
+							<source src="/portfolio/assets/video/work03.webm?v3" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
 					</a>
 				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
+				<li class="listCol4__item">
+					<a href="works/work02.html">
+						<video class="hover-video" poster="/portfolio/assets/img/thumb_work02.jpg" muted loop playsinline>
+							<source src="/portfolio/assets/video/work02.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
 					</a>
 				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
+				<li class="listCol4__item">
+					<a href="works/work01.html">
+						<video class="hover-video" muted loop playsinline>
+							<source src="/portfolio/assets/video/work01.webm?v2" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
 					</a>
 				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-				<li class="worksList__item">
-					<a href="/works/single.php">
-						<img src="https://picsum.photos/300/200" alt="サンプル画像">
-					</a>
-				</li>
-			</ul> -->
+			</ul>
 		</main>
 
 		<footer class="c-footer" id="footer">
 			<nav class="c-footer__nav" aria-label="SNS">
 				<ul>
-					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X</a></li>
-					<li><a class="linkTxt01" href="https://www.instagram.com/taq_tani/" target="_blank" rel="noopener">Instagram</a></li>
+					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X</a>
+					</li>
+					<li><a class="linkTxt01" href="https://www.instagram.com/taq_tani/" target="_blank"
+							rel="noopener">Instagram</a></li>
 				</ul>
 			</nav>
 		</footer>
-		
-		<script src="/portfolio/assets/js/script.js" defer></script>		
+
+		<script src="/portfolio/assets/js/script.js" defer></script>
+		<script>
+			const videos = document.querySelectorAll(".hover-video");
+
+			videos.forEach(video => {
+			video.addEventListener("mouseenter", () => {
+				video.play();
+			});
+
+			video.addEventListener("mouseleave", () => {
+				video.pause();
+				video.currentTime = 0;
+				video.load(); // ← posterを再表示させるために追加
+			});
+			});
+		</script>
 		<svg class="svg_symbol">
 			<symbol id="ico_tab01" viewBox="0 0 7 7">
-				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z"/>
-				<path d="M1 1V6H6V7H0V1H1Z"/>
+				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z" />
+				<path d="M1 1V6H6V7H0V1H1Z" />
 			</symbol>
 		</svg>
 	</div><!--wrap_all-->

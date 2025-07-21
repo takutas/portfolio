@@ -8,11 +8,11 @@
 	<style>
 		body {
 			margin: 0;
-			background: #111;
-			color: white;
-			font-family: sans-serif;
+			background: #f3f3f3;
+			color: #333;
 			height: 300vh;
 			overflow-x: hidden;
+			font-family: "Helvetica Neue",Arial,sans-serif;
 		}
 
 		.word {
@@ -23,7 +23,6 @@
 			display: flex;
 			gap: 0.5rem;
 			font-size: 3rem;
-			font-weight: bold;
 			z-index: 10;
 			pointer-events: none;
 		}
@@ -31,18 +30,20 @@
 		.word span {
 			display: inline-block;
 			will-change: transform, opacity;
+			color: #666;
 		}
 
 		.circle {
-			width: 30vw;
+			width: 25vw;
 			aspect-ratio: 1;
-			background-color: #FFF;
+			background-color: #ddd;
 			border-radius: 50%;
 			position: relative;
 			top: 100vh;
 			left: 50%;
 			transform: translateX(-50%);
 			z-index: 1;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 		}
 	</style>
 </head>

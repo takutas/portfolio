@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Typing with Pink Glow</title>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Courier New", "M PLUS 1p", monospace;
+    }
+
+    #text {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .char--glow {
+      color: #ff2a7c;
+      opacity: 0.3;
+      /* ↓ より薄く */
+      filter: blur(4px);
+      text-shadow: 0 0 8px rgba(255, 42, 159, 0.3);
+      z-index: 0;
+    }
+
+    .char--main {
+      color: #333;
+      z-index: 1;
+    }
+
+    .char--glow,
+    .char--main {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* text-align: center; ← 削除 */
+    }
+
+    .char-wrapper {
+      display: inline-block;
+      position: relative;
+      height: 1em;
+      margin: 0 0.05em;
+    }
+
+    .char-wrapper[data-type="half"] {
+      width: 1ch;
+    }
+
+    .char-wrapper[data-type="half"] .char--glow,
+    .char-wrapper[data-type="half"] .char--main {
+      top: 1px;
+    }
+
+    .char-wrapper[data-type="full"] {
+      width: 2ch;
+    }
+
+    .char-wrapper[data-type="full"] .char--glow,
+    .char-wrapper[data-type="full"] .char--main {
+      font-size: 0.9rem;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="text"></div>
+
+  <script>
+    const targetText = "<harmony> ハーモニー";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789あいうえおかきくけこさしすせそなにぬねの";
+    const container = document.getElementById("text");
+    const wrappers = []; // 各文字のwrapperを記録
+
+    function animateCharacter(finalChar, delay, index, totalLength) {
+      const wrapper = document.createElement("span");
+      wrapper.className = "char-wrapper";
+
+      // ★ 半角・全角判定
+      const isHalfWidth = /^[\x00-\x7F]$/.test(finalChar);
+      wrapper.setAttribute("data-type", isHalfWidth ? "half" : "full");
+
+      const glow = document.createElement("span");
+      glow.className = "char--glow";
+      glow.textContent = "";
+
+      const main = document.createElement("span");
+      main.className = "char--main";
+      main.textContent = "";
+
+      wrapper.appendChild(glow);
+      wrapper.appendChild(main);
+      container.appendChild(wrapper);
+      wrappers.push(wrapper);
+
+      let elapsed = 0;
+      const interval = 30;
+      const duration = 500;
+
+      const randInterval = setInterval(() => {
+        const randChar = chars[Math.floor(Math.random() * chars.length)];
+        main.textContent = randChar;
+        glow.textContent = randChar;
+        elapsed += interval;
+
+        if (elapsed >= duration) {
+          clearInterval(randInterval);
+          main.textContent = finalChar;
+          glow.textContent = finalChar;
+
+          if (index === totalLength - 1) {
+            setTimeout(startFadeOut, 2000);
+          }
+        }
+      }, interval);
+    }
+
+    function startAnimation(text) {
+      [...text].forEach((char, i, arr) => {
+        setTimeout(() => animateCharacter(char, i * 150, i, arr.length), i * 150);
+      });
+    }
+
+    function startFadeOut() {
+      wrappers.forEach((wrapper, i) => {
+        setTimeout(() => {
+          wrapper.classList.add("fade-out");
+        }, i * 50); // ← 200ms → 50ms に短縮
+      });
+    }
+
+    startAnimation(targetText);
+  </script>
+
+</body>
+
+</html>

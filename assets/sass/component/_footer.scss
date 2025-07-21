@@ -8,6 +8,10 @@
 
 .c-footer {
     padding-top: $space-md;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 
     &__nav {
         display: flex;

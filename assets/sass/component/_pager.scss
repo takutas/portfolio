@@ -1,0 +1,64 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+ページャー
+
+------------------------------------------------------------ */
+
+.pager{
+    max-width: 34rem;
+    display: flex;
+    gap: $space-sm;
+    font-size: $fz-sm;
+    letter-spacing: $ls-wide;
+    padding-top: $space-xxl;
+
+    .disabled{
+        color: $color-text-secondary;
+        display: flex;
+        align-items: center;
+    }
+
+    a{
+        display: inline-block;
+        padding: $space-xs 0;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.backList{
+    max-width: 34rem;
+    font-size: $fz-sm;
+    letter-spacing: $ls-wide;
+    padding-top: $space-xxl;
+
+    a{
+        display: inline-block;
+        padding: $space-xs 0;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.viewDetail{
+    text-align: right;
+    font-size: $fz-sm;
+    letter-spacing: $ls-wide;
+    padding-top: $space-xs;
+
+    a{
+        display: inline-block;
+        padding: $space-xs 0;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+

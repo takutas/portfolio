@@ -1,0 +1,124 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+Components
+
+------------------------------------------------------------ */
+.componentUnit{
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+
+    &__controls {
+        display: flex;
+        gap: $space-xs;
+
+        @include mq1024{
+            display: none;
+        }
+
+        button {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    &__iframe-container {
+        width: 100%;
+        max-width: 100%;
+        height: 60vh;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        transition: width 0.3s ease;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    }
+
+    .linkTxt01{
+        text-align: right;
+        font-size: $fz-sm;
+    }
+}
+
+// 7/19時点運用見合わせ
+.componentDetail {
+    max-width: 1200px;
+
+    &__preview {
+        .controls {
+            padding: $space-xs 0;
+            display: flex;
+            gap: $space-xs;
+        }
+
+        .controls button {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .iframe-container {
+            width: 100%;
+            max-width: 100%;
+            height: 60vh;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            transition: width 0.3s ease;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    }
+
+    &__tabs {
+        display: flex;
+        gap: 1px;
+        margin-top: $space-xl;
+
+        button {
+            padding: $space-xxs $space-sm;
+            border: none;
+            background: #eee;
+            cursor: pointer;
+            font-weight: $font-weight-regular;
+            font-size: $fz-base;
+
+            &.active {
+                background: #333;
+                color: #fff;
+            }
+        }
+    }
+
+    &__code-pane {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+    }
+}

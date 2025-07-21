@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neumorphism Glow Ring</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    .neumorph-container {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      box-shadow:
+        6px 6px 18px #bebebe,
+        -6px -6px 18px #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-trace {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      border-radius: 50%;
+      animation: rotate 3s linear infinite;
+    }
+
+    .glow-trace::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ff42c0, transparent);
+      border-radius: 50%;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    /* 発光アニメーション */
+    .pulse-ring {
+      animation: pulse 1s ease-out forwards;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow:
+          6px 6px 18px #bebebe,
+          -6px -6px 18px #ffffff;
+      }
+      50% {
+        box-shadow:
+          6px 6px 18px #fb45be,
+          -6px -6px 18px #ffb4d8;
+      }
+      100% {
+        box-shadow:
+          6px 6px 18px #bebebe,
+          -6px -6px 18px #ffffff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="neumorph-container" id="ring">
+    <div class="glow-trace"></div>
+  </div>
+
+  <script>
+    const ring = document.getElementById("ring");
+    const glow = ring.querySelector(".glow-trace");
+
+    // 一周ごとに発光演出
+    glow.addEventListener("animationiteration", () => {
+      ring.classList.add("pulse-ring");
+      setTimeout(() => ring.classList.remove("pulse-ring"), 1000);
+    });
+  </script>
+</body>
+
+</html>

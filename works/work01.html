@@ -6,12 +6,12 @@
 	<meta name="format-detection" content="telephone=no,address=no,email=no">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Works01 Takumi Tanigawa Portfolio</title>
-	<link rel="canonical" href="https://takutas.github.io/portfolio-site/works/single01.html" />
+	<link rel="canonical" href="https://takutas.github.io/portfolio-site/works/work01.html" />
 	<meta name="description" content="Works01 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
 	<!-- Open Graph -->
 	<meta property="og:title" content="Works01 Takumi Tanigawa Portfolio">
 	<meta property="og:description" content="Works01 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
-	<meta property="og:url" content="https://takutas.github.io/portfolio-site/works/single01.html">
+	<meta property="og:url" content="https://takutas.github.io/portfolio-site/works/work01.html">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Takumi Tanigawa Portfolio">
 	<meta property="og:locale" content="ja_JP">
@@ -36,6 +36,7 @@
 								<use href="#ico_tab01"></use>
 							</svg></a></li>
 					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
+					<li><a class="linkTxt01" href="/portfolio/components/">Components</a></li>
 				</ul>
 			</nav>
 			<p>&copy;Takumi.T 2025</p>
@@ -43,27 +44,36 @@
 
 		<main>
 			<div class="worksDetail">
-				<img class="worksDetail__image" src="https://picsum.photos/600/400" alt="サンプル画像">
-				<h2>CircleAnimation</h2>
+				<p class="backList">
+					<a href="/portfolio/">←View All</a>
+				</p>
+				<div class="pager">
+					<p><a href="work02.html">←Prev</a></p>
+					<p class="disabled">Next→</p>
+				</div>
+				<video class="worksDetail__video" autoplay muted loop playsinline>
+					<source src="/portfolio/assets/video/work01.webm?v3" type="video/webm">
+					Your browser does not support the video tag.
+				</video>
+				<h2>Scroll-Triggered Scatter Effect with GSAP</h2>
 				<div class="worksDetail__desc">
-					<p>swiper.jsを使用したスライドパターンを中心に、HTMLとCSSでつくるカルーセルUIも作成しています。制作現場で多く用いられる汎用パターンから、実験的な表現も。</p>
+					<p>スクロールに応じた文字の飛散アニメーションをGSAPとScrollTriggerで実装。<br>
+						「重さ」「慣性」「反発」を視覚的に表現し、インタラクションと自然な動きの両立を目指しました。<br>
+						特定の文字（T・T）のみに質量とバウンド感を与えることで、個別の物理感を演出しています。</p>
+					<p>動きの数値設計や微調整に関しては、生成AIとの対話を通して検証・調整を重ねながら、<br>
+						言語ベースで「理想の動き」を試行錯誤し、納得のいく表現に落とし込みました。</p>
 				</div>
 				<div class="worksDetail__info">
 					<div>
-						<h3 class="heading01">Technology</h3>
-						<p>Astro / Barba.js / GSAP / Lenis.js</p>
+						<h3 class="heading01">Feature Tech</h3>
+						<p>GSAP</p>
 					</div>
 					<div>
-						<h3 class="heading01">Deploy</h3>
-						<p>Vercel</p>
+						<p>#HTML, #CSS, #JavaScript, #GSAP, #ScrollTrigger, #Motion Design, #Micro Interaction</p>
 					</div>
 				</div>
-				<div class="worksDetail__pager">
-					<p><a href="javascript:void(0);">←Prev</a></p>
-					<p><a href="javascript:void(0);">Next→</a></p>
-				</div>
-				<p class="worksDetail__backList">
-					<a href="/portfolio/">←View All</a>
+				<p class="worksDetail__external">
+					<a href="../demo/shatter/" target="_blank">Demo Syte</a>
 				</p>
 			</div>
 		</main>
@@ -82,8 +92,8 @@
 		<script src="/portfolio/assets/js/script.js" defer></script>
 		<svg class="svg_symbol">
 			<symbol id="ico_tab01" viewBox="0 0 7 7">
-				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z"/>
-				<path d="M1 1V6H6V7H0V1H1Z"/>
+				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z" />
+				<path d="M1 1V6H6V7H0V1H1Z" />
 			</symbol>
 		</svg>
 	</div><!--wrap_all-->
