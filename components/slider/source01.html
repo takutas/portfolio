@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Slider1 Components Takumi Tanigawa Portfolio</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	<link href="/portfolio/assets/css/style.min.css" media="all" rel="stylesheet">
+	<style>
+		.demoSlider1 {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+		}
+
+		.demoSlider1__inner {
+			width: calc(100%/1440*400);
+			aspect-ratio: 16/9;
+			margin: 0 auto;
+		}
+
+		.demoSlider1 .swiper {
+			height: 100%;
+			overflow: visible;
+		}
+
+		.demoSlider1 .swiper-slide {
+			transform: scale(0.7);
+			transform-origin: left bottom;
+			transition: transform 0.6s ease;
+			background-color: #eee;
+			color: #333;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 1.2rem;
+		}
+
+		.demoSlider1 .swiper-slide-active {
+			transform: scale(1);
+			background-color: #fff;
+			color: #111;
+			z-index: 2;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+
+		.demoSlider1 .swiper-slide-next+.swiper-slide {
+			transform: scale(0.7) translateX(calc((100%/400*124)*-1));
+		}
+
+		.demoSlider1 .swiper-slide-next {
+			transform: scale(0.7) translateX(calc(100%/400*24));
+		}
+
+		.demoSlider1 .swiper-slide-prev {
+			transform: scale(0.7) translateX(calc(100%/400*148));
+		}
+
+		.demoSlider1 .swiper-slide:has(+ .swiper-slide-prev) {
+			transform: scale(0.7) translateX(calc(100%/400*296));
+		}
+	</style>
+</head>
+
+<body>
+	<div class="demoSlider1">
+		<div class="demoSlider1__inner">
+			<div class="swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">slide1</div>
+					<div class="swiper-slide">slide2</div>
+					<div class="swiper-slide">slide3</div>
+					<div class="swiper-slide">slide4</div>
+					<div class="swiper-slide">slide5</div>
+					<div class="swiper-slide">slide6</div>
+					<div class="swiper-slide">slide7</div>
+					<div class="swiper-slide">slide8</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<script>
+		const voicesSlider = new Swiper('.demoSlider1 .swiper', {
+			loop: true,
+			slidesPerView: "auto",
+			initialSlide: 2,
+			speed: 600,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			loopAdditionalSlides: 2,
+		});
+	</script>
+</body>
+
+</html>
