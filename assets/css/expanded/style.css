@@ -484,6 +484,9 @@ Profile
 }
 .profile__contact {
   padding-bottom: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.4rem;
 }
 .profile__image {
   width: 17.8rem;

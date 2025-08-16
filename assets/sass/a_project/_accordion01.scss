@@ -26,9 +26,9 @@ accordion01
             padding: 16px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 600;
             position: relative;
             box-sizing: border-box;
+            color: $color-text-primary;
 
             &[aria-expanded="true"] .icon {
                 transform: rotate(180deg);

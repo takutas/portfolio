@@ -535,9 +535,9 @@ accordion01
   padding: 16px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
   position: relative;
   box-sizing: border-box;
+  color: #000;
 }
 .accordionGroup01 .accordionUnit__btn[aria-expanded=true] .icon {
   transform: rotate(180deg);
@@ -590,16 +590,13 @@ accordion02
   margin: auto;
   padding: 30px;
 }
-.accordionGroup02 details {
+.accordionGroup02 .accordionUnit {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 16px;
   background-color: #fff;
 }
-.accordionGroup02 details[open] summary .icon {
-  transform: rotate(180deg);
-}
-.accordionGroup02 summary {
+.accordionGroup02 .accordionUnit__btn {
   all: unset;
   display: flex;
   justify-content: space-between;
@@ -608,40 +605,46 @@ accordion02
   padding: 16px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
-  position: relative;
   box-sizing: border-box;
+  color: #000;
 }
-.accordionGroup02 summary::-webkit-details-marker {
-  display: none;
-  /* Chromeなどでの矢印非表示 */
+.accordionGroup02 .accordionUnit__btn[aria-expanded=true] .icon {
+  transform: rotate(180deg);
 }
-.accordionGroup02 summary .icon {
-  display: block;
+.accordionGroup02 .accordionUnit__btn:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+.accordionGroup02 .accordionUnit__contents {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.4s ease;
+  padding: 0 16px;
+  background-color: #f5f5f5;
+}
+.accordionGroup02 .accordionUnit__contents-inner {
+  padding: 16px 0;
+}
+.accordionGroup02 .icon {
   position: relative;
   width: 19px;
   transform-origin: center 43%;
   transition: transform 0.4s;
 }
-.accordionGroup02 summary .icon::before, .accordionGroup02 summary .icon::after {
+.accordionGroup02 .icon::before, .accordionGroup02 .icon::after {
   content: "";
   position: absolute;
-  display: block;
   width: 12px;
   height: 2px;
   background-color: #000;
 }
-.accordionGroup02 summary .icon::before {
+.accordionGroup02 .icon::before {
   left: 0;
   transform: rotate(45deg);
 }
-.accordionGroup02 summary .icon::after {
+.accordionGroup02 .icon::after {
   right: 0;
   transform: rotate(-45deg);
-}
-.accordionGroup02 .contents {
-  padding: 2rem;
-  background-color: #f5f5f5;
 }
 
 /* ------------------------------------------------------------
@@ -659,9 +662,8 @@ accordion03
   border-radius: 4px;
   margin-bottom: 16px;
   background-color: #fff;
-  overflow: hidden;
 }
-.accordionGroup03 details.is-opened summary .icon {
+.accordionGroup03 details[open] summary .icon {
   transform: rotate(180deg);
 }
 .accordionGroup03 summary {
@@ -673,21 +675,21 @@ accordion03
   padding: 16px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
   position: relative;
   box-sizing: border-box;
 }
 .accordionGroup03 summary::-webkit-details-marker {
   display: none;
+  /* Chromeなどでの矢印非表示 */
 }
-.accordionGroup03 .icon {
+.accordionGroup03 summary .icon {
   display: block;
   position: relative;
   width: 19px;
   transform-origin: center 43%;
   transition: transform 0.4s;
 }
-.accordionGroup03 .icon::before, .accordionGroup03 .icon::after {
+.accordionGroup03 summary .icon::before, .accordionGroup03 summary .icon::after {
   content: "";
   position: absolute;
   display: block;
@@ -695,19 +697,17 @@ accordion03
   height: 2px;
   background-color: #000;
 }
-.accordionGroup03 .icon::before {
+.accordionGroup03 summary .icon::before {
   left: 0;
   transform: rotate(45deg);
 }
-.accordionGroup03 .icon::after {
+.accordionGroup03 summary .icon::after {
   right: 0;
   transform: rotate(-45deg);
 }
 .accordionGroup03 .contents {
-  background-color: #f5f5f5;
-}
-.accordionGroup03 .contents__inner {
   padding: 2rem;
+  background-color: #f5f5f5;
 }
 
 /* ------------------------------------------------------------
@@ -720,13 +720,17 @@ accordion04
   margin: auto;
   padding: 30px;
 }
-.accordionGroup04 .accordionUnit {
+.accordionGroup04 details {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 16px;
   background-color: #fff;
+  overflow: hidden;
 }
-.accordionGroup04 .accordionUnit__btn {
+.accordionGroup04 details.is-opened summary .icon {
+  transform: rotate(180deg);
+}
+.accordionGroup04 summary {
   all: unset;
   display: flex;
   justify-content: space-between;
@@ -735,27 +739,14 @@ accordion04
   padding: 16px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
+  position: relative;
   box-sizing: border-box;
 }
-.accordionGroup04 .accordionUnit__btn[aria-expanded=true] .icon {
-  transform: rotate(180deg);
-}
-.accordionGroup04 .accordionUnit__btn:focus-visible {
-  outline: 2px solid #007bff;
-  outline-offset: 2px;
-}
-.accordionGroup04 .accordionUnit__contents {
-  overflow: hidden;
-  height: 0;
-  transition: height 0.4s ease;
-  padding: 0 16px;
-  background-color: #f5f5f5;
-}
-.accordionGroup04 .accordionUnit__contents-inner {
-  padding: 16px 0;
+.accordionGroup04 summary::-webkit-details-marker {
+  display: none;
 }
 .accordionGroup04 .icon {
+  display: block;
   position: relative;
   width: 19px;
   transform-origin: center 43%;
@@ -764,6 +755,7 @@ accordion04
 .accordionGroup04 .icon::before, .accordionGroup04 .icon::after {
   content: "";
   position: absolute;
+  display: block;
   width: 12px;
   height: 2px;
   background-color: #000;
@@ -775,4 +767,10 @@ accordion04
 .accordionGroup04 .icon::after {
   right: 0;
   transform: rotate(-45deg);
+}
+.accordionGroup04 .contents {
+  background-color: #f5f5f5;
+}
+.accordionGroup04 .contents__inner {
+  padding: 2rem;
 }/*# sourceMappingURL=accessible_ui.css.map */

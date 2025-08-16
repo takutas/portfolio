@@ -19,6 +19,9 @@ Profile
 
     &__contact{
         padding-bottom: $space-xl;
+        display: flex;
+        flex-direction: column;
+        row-gap: $space-xxs;
     }
     
     &__image{
