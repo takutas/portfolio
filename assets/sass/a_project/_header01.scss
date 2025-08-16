@@ -2,11 +2,12 @@
 
 /* ------------------------------------------------------------
 
-
+header01
 
 ------------------------------------------------------------ */
+
 body {
-    &.open{
+    &.open {
         overflow: hidden;
     }
 }
@@ -25,7 +26,7 @@ body {
     &__menu-button {
         display: none;
 
-        @media screen and (max-width: 767px) {
+        @include mq767 {
             background-color: #8e919b;
             display: block;
             width: 65px;
@@ -52,26 +53,12 @@ body {
         top: 50%;
         left: 18px;
 
-        @media screen and (max-width: 767px) {
-            width: 2.9rem;
-            height: 0.1rem;
-            left: 1.8rem;
-        }
-
         &:nth-of-type(1) {
             transform: translateY(-7px);
-
-            @media screen and (max-width: 767px) {
-                transform: translateY(-0.7rem);
-            }
         }
 
         &:nth-of-type(3) {
             transform: translateY(7px);
-
-            @media screen and (max-width: 767px) {
-                transform: translateY(0.7rem);
-            }
         }
 
         #wrap-all.open &:nth-of-type(1) {
@@ -85,13 +72,12 @@ body {
         #wrap-all.open &:nth-of-type(3) {
             transform: rotate(-45deg);
         }
-
     }
 
     &__drawer {
         display: contents;
 
-        @media screen and (max-width: 767px) {
+        @include mq767 {
             display: block;
             background-color: #8e919b;
             position: absolute;
@@ -113,7 +99,7 @@ body {
         &-inner {
             display: contents;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 display: block;
                 height: 100%;
                 padding: 80px 0;
@@ -130,14 +116,12 @@ body {
     &__nav {
         flex: 1;
 
-        @media screen and (max-width: 767px) {}
-
         &-list {
             display: flex;
             justify-content: center;
             gap: 24px;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 flex-direction: column;
                 gap: 0;
                 border-top: 1px solid #686d80;
@@ -145,7 +129,7 @@ body {
         }
 
         &-item {
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 border-bottom: 1px solid #686d80;
             }
 
@@ -153,7 +137,7 @@ body {
                 display: block;
                 font-size: 14px;
 
-                @media screen and (max-width: 767px) {
+                @include mq767 {
                     padding: 16px;
                 }
 
@@ -161,6 +145,10 @@ body {
                     opacity: .7;
                 }
             }
+        }
+
+        &-item--parent.active &-child {
+            visibility: visible;
         }
 
         &-button {
@@ -171,8 +159,9 @@ body {
             display: block;
             width: 100%;
             text-align: left;
+            color: #000;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 padding: 16px;
             }
 
@@ -195,14 +184,10 @@ body {
             background-color: #aaacb5;
             visibility: hidden;
             overflow: hidden;
-            transition: height .4s, visibility .4s;
+            transition: height 0.4s, visibility 0.4s;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 position: unset;
-            }
-
-            .header__nav-item--parent.active & {
-                visibility: visible;
             }
         }
 
@@ -213,7 +198,7 @@ body {
             margin: 0 auto;
             padding: 24px;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 flex-direction: column;
                 align-items: center;
                 padding: 40px;
@@ -225,9 +210,11 @@ body {
             max-width: 500px;
 
             a {
+                font-size: 13px;
+                
                 img {
                     width: 100%;
-                    aspect-ratio: 16 / 9;
+                    aspect-ratio: 16/9;
                     background-color: #FFF;
                     margin-bottom: 8px;
                 }
@@ -237,7 +224,7 @@ body {
         #js-focus-trap {
             display: none;
 
-            @media screen and (max-width: 767px) {
+            @include mq767 {
                 display: block;
             }
         }

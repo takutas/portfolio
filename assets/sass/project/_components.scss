@@ -5,7 +5,12 @@
 Components
 
 ------------------------------------------------------------ */
-.componentUnit{
+.componentTxt{
+    margin-bottom: $space-xxxl;
+    max-width: 400px;
+}
+
+.componentUnit {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
@@ -15,7 +20,7 @@ Components
         display: flex;
         gap: $space-xs;
 
-        @include mq1024{
+        @include mq1024 {
             display: none;
         }
 
@@ -45,9 +50,35 @@ Components
         }
     }
 
-    .linkTxt01{
-        text-align: right;
+    &__tag {
+        a {}
+    }
+
+    &__source {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xxs;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: $space-xxs;
+
+            &:hover{
+                text-decoration: underline;
+            }
+
+            svg {
+                width: 0.7rem;
+                height: 0.7rem;
+                fill: $color-text-primary;
+            }
+        }
+    }
+
+    &__reference{
         font-size: $fz-sm;
+        color: $color-text-secondary;
     }
 }
 

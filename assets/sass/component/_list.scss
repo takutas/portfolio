@@ -15,7 +15,17 @@
 .listCol2{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-sm;
+    gap: $space-xl $space-sm;
+
+    @include mq767{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.listCol3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-xl $space-sm;
 
     @include mq767{
         grid-template-columns: repeat(1, 1fr);
@@ -25,7 +35,7 @@
 .listCol4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: $space-sm;
+    gap: $space-xl $space-sm;
 
     @include mq767{
         grid-template-columns: repeat(2, 1fr);

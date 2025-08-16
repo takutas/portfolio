@@ -27,17 +27,13 @@ body {
         "Hiragino Sans",
         Meiryo,
         sans-serif;
-
-    &.open {
-        overflow: hidden;
-    }
 }
 
 #wrap-all {
     padding: $space-md;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 }
 
 .svg_symbol {

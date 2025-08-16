@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Header1 Components Takumi Tanigawa Portfolio</title>
+	<link href="/portfolio/assets/css/accessible_ui.min.css" media="all" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrap-all">
+		<header class="header">
+			<button class="header__menu-button" id="btn-menu" aria-label="メニューを開く" aria-controls="header-navigation"
+				aria-expanded="false">
+				<span class="header__menu-icon-line"></span>
+				<span class="header__menu-icon-line"></span>
+				<span class="header__menu-icon-line"></span>
+			</button>
+
+			<div class="header__drawer">
+				<div class="header__drawer-inner">
+					<nav class="header__nav" id="header-navigation">
+						<ul class="header__nav-list">
+							<li class="header__nav-item"><a class="header__nav-link" href="javascript:void(0);">UNDER1</a></li>
+							<li class="header__nav-item"><a class="header__nav-link" href="javascript:void(0);">UNDER2</a></li>
+
+							<li class="header__nav-item header__nav-item--parent">
+								<button class="header__nav-button" aria-label="メニューを開く" aria-controls="nav-child01"
+									aria-expanded="false">UNDER3</button>
+								<div class="header__nav-child" id="nav-child01">
+									<ul class="header__nav-sublist">
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER3-1
+											</a>
+										</li>
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER3-2
+											</a>
+										</li>
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER3-3
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+							<li class="header__nav-item header__nav-item--parent">
+								<button class="header__nav-button" aria-label="メニューを開く" aria-controls="nav-child02"
+									aria-expanded="false">UNDER4</button>
+								<div class="header__nav-child" id="nav-child02">
+									<ul class="header__nav-sublist">
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER4-1
+											</a>
+										</li>
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER4-2
+											</a>
+										</li>
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER4-3
+											</a>
+										</li>
+										<li class="header__nav-subitem">
+											<a href="javascript:void(0);">
+												<img src="../image/sample_16-9.svg" alt="">
+												UNDER4-3
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+						<div id="js-focus-trap" tabindex="-1"></div>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<div style="height: 100dvh;"></div>
+	</div>
+
+	<script src="/portfolio/assets/js/script.js" defer></script>
+	<script src="/portfolio/assets/js/accessible_ui/header01.js" defer></script>
+	<script>
+		// ドロワーメニュー
+		document.addEventListener('DOMContentLoaded', () => {
+			let state = false;
+			let pos = 0;
+
+			const btnMenu = document.getElementById('btn-menu');
+			const wrapAll = document.getElementById('wrap-all');
+			const body = document.body;
+			const focusTrap = document.getElementById('js-focus-trap');
+
+			// メニューボタン押下時
+			btnMenu.addEventListener('click', () => {
+				if (!state) {
+					pos = window.scrollY || window.pageYOffset;
+					wrapAll.classList.add('open');
+					body.classList.add('open');
+					btnMenu.setAttribute("aria-expanded", "true");
+					btnMenu.setAttribute("aria-label", "メニューを閉じる");
+					focusTrap.setAttribute("tabindex", "0");
+					state = true;
+				} else {
+					wrapAll.classList.remove('open');
+					body.classList.remove('open');
+					btnMenu.setAttribute("aria-expanded", "false");
+					btnMenu.setAttribute("aria-label", "メニューを開く");
+					focusTrap.setAttribute("tabindex", "-1");
+					state = false;
+				}
+			});
+
+			// フォーカストラップ
+			focusTrap.addEventListener('focus', () => {
+				btnMenu.focus();
+			});
+
+			// ESCキーでメニューを閉じる
+			window.addEventListener('keyup', (e) => {
+				if (e.key === 'Escape' || e.keyCode === 27) {
+					if (state) {
+						wrapAll.classList.remove('open');
+						body.classList.remove('open');
+						btnMenu.setAttribute("aria-expanded", "false");
+						btnMenu.setAttribute("aria-label", "メニューを開く");
+						focusTrap.setAttribute("tabindex", "-1");
+						state = false;
+						window.scrollTo(0, pos);
+					}
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

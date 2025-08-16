@@ -36,7 +36,7 @@
 								<use href="#ico_tab01"></use>
 							</svg></a></li>
 					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
-					<li><a class="linkTxt01" href="/portfolio/components/">Components</a></li>
+					<li><a class="linkTxt01" href="/portfolio/accessible_ui/">Accessible UI</a></li>
 				</ul>
 			</nav>
 			<p>&copy;Takumi.T 2025</p>
@@ -74,7 +74,7 @@
 		<footer class="c-footer" id="footer">
 			<nav class="c-footer__nav" aria-label="SNS">
 				<ul>
-					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X</a>
+					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X (twitter)</a>
 					</li>
 					<li><a class="linkTxt01" href="https://www.instagram.com/taq_tani/" target="_blank"
 							rel="noopener">Instagram</a></li>
@@ -86,17 +86,41 @@
 		<script>
 			const videos = document.querySelectorAll(".hover-video");
 
-			videos.forEach(video => {
-			video.addEventListener("mouseenter", () => {
-				video.play();
-			});
+			// スマホ縦画面（767px以下 & portrait）のみで適用
+			const isMobilePortrait = window.matchMedia("(orientation: portrait) and (max-width: 767px)").matches;
 
-			video.addEventListener("mouseleave", () => {
-				video.pause();
-				video.currentTime = 0;
-				video.load(); // ← posterを再表示させるために追加
-			});
-			});
+			if (isMobilePortrait && "IntersectionObserver" in window) {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						const video = entry.target;
+						if (entry.isIntersecting) {
+							video.play();
+						} else {
+							video.pause();
+							video.currentTime = 0;
+							video.load(); // posterを戻す
+						}
+					});
+				}, {
+					threshold: 0.6 // 60%以上表示されたら再生
+				});
+
+				videos.forEach(video => {
+					observer.observe(video);
+				});
+			} else {
+				// PCなどでは hover 動作（従来通り）
+				videos.forEach(video => {
+					video.addEventListener("mouseenter", () => {
+						video.play();
+					});
+					video.addEventListener("mouseleave", () => {
+						video.pause();
+						video.currentTime = 0;
+						video.load();
+					});
+				});
+			}
 		</script>
 		<svg class="svg_symbol">
 			<symbol id="ico_tab01" viewBox="0 0 7 7">
