@@ -12,7 +12,6 @@
     gap: $space-sm;
     font-size: $fz-sm;
     letter-spacing: $ls-wide;
-    padding-top: $space-xxl;
 
     .disabled{
         color: $color-text-secondary;
@@ -31,10 +30,9 @@
 }
 
 .backList{
-    max-width: 34rem;
     font-size: $fz-sm;
     letter-spacing: $ls-wide;
-    padding-top: $space-xxl;
+    padding-top: $space-xl;
 
     a{
         display: inline-block;
@@ -46,19 +44,4 @@
     }
 }
 
-.viewDetail{
-    text-align: right;
-    font-size: $fz-sm;
-    letter-spacing: $ls-wide;
-    padding-top: $space-xs;
-
-    a{
-        display: inline-block;
-        padding: $space-xs 0;
-
-        &:hover{
-            text-decoration: underline;
-        }
-    }
-}
 

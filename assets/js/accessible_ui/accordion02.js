@@ -1,66 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.accordionUnit__btn');
+    const group = document.querySelector('.accordionGroup02');
+    if (!group) return; // 対象が無ければ何もしない（保険）
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => toggle(button));
-        button.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggle(button);
-            }
-        });
+    /**
+     * クリック／Enter／Space で開閉をトグル（イベント委譲）
+     * - クリック: onToggle をそのまま呼ぶ
+     * - キー操作: Enter/Space のみ拾ってスクロール抑制＋onToggle
+     */
+    group.addEventListener('click', onToggle);
+    group.addEventListener('keydown', (e) => {
+        if (
+            e.target.matches('.accordionUnit__btn') &&
+            (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar')
+        ) {
+            e.preventDefault();
+            onToggle(e);
+        }
     });
 
-    // 連打対策フラグを各contentに持たせる
-    function isAnimating(content) { return content.dataset.animating === '1'; }
-    function lock(content) { content.dataset.animating = '1'; }
-    function unlock(content) { delete content.dataset.animating; }
+    /**
+     * ボタンを特定して該当パネルを開閉
+     * - data-animating=1 中は無視（連打対策）
+     * - ARIA（aria-expanded/aria-label）を必ず同期
+     * - height を 0 ⇄ scrollHeight にして CSS の transition でアニメ
+     */
+    function onToggle(e) {
+        const btn = e.target.closest('.accordionUnit__btn');
+        if (!btn) return;
 
-    function toggle(button) {
-        const content = document.getElementById(button.getAttribute('aria-controls'));
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        if (isAnimating(content)) return;
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!panel || panel.dataset.animating === '1') return;
 
-        expanded ? close(button, content) : open(button, content);
-    }
+        const willOpen = btn.getAttribute('aria-expanded') !== 'true';
 
-    function open(button, content) {
-        button.setAttribute('aria-expanded', 'true');
-        button.setAttribute('aria-label', '閉じる');
-        content.removeAttribute('hidden');
+        // 状態とラベル更新（スクリーンリーダー向け）
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        btn.setAttribute('aria-label', willOpen ? '閉じる' : '開く');
 
-        // いったん 0 → 実高さ へ
-        lock(content);
-        content.style.height = '0px';
-        // 次フレームでscrollHeight反映
-        requestAnimationFrame(() => {
-            content.style.height = content.scrollHeight + 'px';
-        });
+        // 開閉本体（height アニメ）
+        panel.dataset.animating = '1';
+        if (willOpen) {
+            panel.hidden = false; // hidden を先に外す（scrollHeight を正しく得るため）
+            panel.style.height = '0px'; // 0 → 実高へ
+            requestAnimationFrame(() => {
+                panel.style.height = panel.scrollHeight + 'px';
+            });
+        } else {
+            panel.style.height = panel.scrollHeight + 'px'; // 現在高を固定
+            requestAnimationFrame(() => {
+                panel.style.height = '0px'; // 実高 → 0 へ
+            });
+        }
 
-        content.addEventListener('transitionend', function handler(e) {
-            if (e.propertyName !== 'height') return;
-            content.style.height = 'auto'; // 可変に対応
-            unlock(content);
-            content.removeEventListener('transitionend', handler);
-        }, { once: true });
-    }
-
-    function close(button, content) {
-        button.setAttribute('aria-expanded', 'false');
-        button.setAttribute('aria-label', '開く');
-
-        // auto → 固定値 → 0 へ
-        lock(content);
-        content.style.height = content.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-            content.style.height = '0px';
-        });
-
-        content.addEventListener('transitionend', function handler(e) {
-            if (e.propertyName !== 'height') return;
-            content.setAttribute('hidden', '');
-            unlock(content);
-            content.removeEventListener('transitionend', handler);
+        // アニメ完了後の処理（auto復帰／hidden付け直し／ロック解除）
+        panel.addEventListener('transitionend', function onEnd(ev) {
+            if (ev.propertyName !== 'height') return;
+            panel.style.height = willOpen ? 'auto' : '';
+            if (!willOpen) panel.hidden = true;
+            delete panel.dataset.animating;
+            panel.removeEventListener('transitionend', onEnd);
         }, { once: true });
     }
 });

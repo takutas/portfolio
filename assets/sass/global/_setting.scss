@@ -13,10 +13,11 @@ Color Tokens
 ---------------------------------------- */
 $color-bg-default: #FFFFFF;
 $color-surface: #F8F8F8;
+$color-accent: #dcdcdc;
 
 /* Text Colors */
 $color-text-primary: #000;
-$color-text-secondary: #ABABAB;
+$color-text-secondary: #909090;
 
 /* ----------------------------------------
 Typography Tokens
@@ -24,9 +25,9 @@ Typography Tokens
 /* Font Sizes */
 $fz-base: 1.3rem;
 $fz-jp-base: 1.2rem;
-$fz-sm: 1rem;
+$fz-sm: 1.1rem;
 $fz-lg: 1.4rem;
-
+$fz-xl: 1.6rem;
 
 /* Font Weights */
 $font-weight-regular: 400;

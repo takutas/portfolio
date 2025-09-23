@@ -15,7 +15,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Takumi Tanigawa Portfolio">
 	<meta property="og:locale" content="ja_JP">
-	<!-- <meta property="og:image" content="https://takutas.github.io/portfolio-site/assets/img/ogp.jpg"> -->
+	<meta property="og:image" content="https://takutas.github.io/portfolio-site/assets/img/ogp.jpg">
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@takumi00060421">
@@ -24,19 +24,19 @@
 </head>
 
 <body>
-	<div id="wrap-all">
+	<div id="wrap-all" class="page-works">
 		<header class="c-header">
 			<nav class="c-header__nav" aria-label="グローバルナビゲーション">
 				<ul>
 					<li>
-						<h1>Works</h1>
+						<h1>Sketch</h1>
 					</li>
+					<li><a class="linkTxt01" href="/portfolio/works/">Works</a></li>
 					<li><a class="linkTxt01" href="https://qiita.com/takutas" target="_blank"
 							rel="noopener">Journal<svg>
 								<use href="#ico_tab01"></use>
 							</svg></a></li>
 					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
-					<li><a class="linkTxt01" href="/portfolio/accessible_ui/">Accessible UI</a></li>
 				</ul>
 			</nav>
 			<p>&copy;Takumi.T 2025</p>
@@ -45,28 +45,75 @@
 		<main>
 			<ul class="listCol4">
 				<li class="listCol4__item">
-					<a href="works/work03.html">
-						<video class="hover-video" muted loop playsinline>
-							<source src="/portfolio/assets/video/work03.webm?v3" type="video/webm">
-							Your browser does not support the video tag.
-						</video>
+					<a href="demo/typing-anim2/index.html" target="_blank">
+						<img src="assets/img/thumb_sketch05.webp" alt="" width="920" height="920" loading="lazy">
 					</a>
+					<div class="sketchDetail">
+						<div>
+							<p>#JavaScript, #Typography</p>
+						</div>
+						<!-- <div>
+							<p class="sketchDetail__note">
+								References : 
+								<cite>
+									<a class="linkTxt01" href="https://goworkship.com/magazine/text-effect-typography/#4" target="_blank" rel="noopener noreferrer">
+									Workship MAGAZINE「4. タイピング風のテキストアニメーション」
+									</a>
+								</cite>
+							</p>
+						</div> -->
+					</div>
 				</li>
 				<li class="listCol4__item">
-					<a href="works/work02.html">
-						<video class="hover-video" poster="/portfolio/assets/img/thumb_work02.jpg" muted loop playsinline>
-							<source src="/portfolio/assets/video/work02.webm" type="video/webm">
-							Your browser does not support the video tag.
-						</video>
+					<a href="demo/p5js/glow-mesh/" target="_blank">
+						<img src="assets/img/thumb_sketch04.webp" alt="" width="920" height="920" loading="lazy">
 					</a>
+					<div class="sketchDetail">
+						<div>
+							<p>#p5.js</p>
+						</div>
+						<!-- <div>
+							<p class="sketchDetail__note">
+								References : 
+								<cite>
+									<a class="linkTxt01" href="https://ics.media/entry/250611/" target="_blank" rel="noopener noreferrer">
+									ICS Media「p5.jsによるクリエイティブコーディング入門」
+									</a>
+								</cite>
+								<br>※推奨最小ブラウザサイズ：640×640px
+							</p>
+						</div> -->
+					</div>
 				</li>
 				<li class="listCol4__item">
-					<a href="works/work01.html">
-						<video class="hover-video" muted loop playsinline>
-							<source src="/portfolio/assets/video/work01.webm?v2" type="video/webm">
-							Your browser does not support the video tag.
-						</video>
+					<a href="demo/neumor-glow/index.html" target="_blank">
+						<img src="assets/img/thumb_sketch03.webp" alt="" width="920" height="920" loading="lazy">
 					</a>
+					<div class="sketchDetail">
+						<div>
+							<p>#CSS, #JavaScript</p>
+						</div>
+					</div>
+				</li>
+				<li class="listCol4__item">
+					<a href="demo/typing-anim/index.html" target="_blank">
+						<img src="assets/img/thumb_sketch02.webp" alt="" width="920" height="920" loading="lazy">
+					</a>
+					<div class="sketchDetail">
+						<div>
+							<p>#CSS, #JavaScript, #Typography</p>
+						</div>
+					</div>
+				</li>
+				<li class="listCol4__item">
+					<a href="demo/shatter/index.html" target="_blank">
+						<img src="assets/img/thumb_sketch01.webp" alt="" width="920" height="920" loading="lazy">
+					</a>
+					<div class="sketchDetail">
+						<div>
+							<p>#GSAP, #ScrollTrigger</p>
+						</div>
+					</div>
 				</li>
 			</ul>
 		</main>
@@ -74,52 +121,14 @@
 		<footer class="c-footer" id="footer">
 			<nav class="c-footer__nav" aria-label="SNS">
 				<ul>
-					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X (twitter)</a>
+					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X
+							(twitter)</a>
 					</li>
 				</ul>
 			</nav>
 		</footer>
 
 		<script src="/portfolio/assets/js/script.js" defer></script>
-		<script>
-			const videos = document.querySelectorAll(".hover-video");
-
-			// スマホ縦画面（767px以下 & portrait）のみで適用
-			const isMobilePortrait = window.matchMedia("(orientation: portrait) and (max-width: 767px)").matches;
-
-			if (isMobilePortrait && "IntersectionObserver" in window) {
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						const video = entry.target;
-						if (entry.isIntersecting) {
-							video.play();
-						} else {
-							video.pause();
-							video.currentTime = 0;
-							video.load(); // posterを戻す
-						}
-					});
-				}, {
-					threshold: 0.6 // 60%以上表示されたら再生
-				});
-
-				videos.forEach(video => {
-					observer.observe(video);
-				});
-			} else {
-				// PCなどでは hover 動作（従来通り）
-				videos.forEach(video => {
-					video.addEventListener("mouseenter", () => {
-						video.play();
-					});
-					video.addEventListener("mouseleave", () => {
-						video.pause();
-						video.currentTime = 0;
-						video.load();
-					});
-				});
-			}
-		</script>
 		<svg class="svg_symbol">
 			<symbol id="ico_tab01" viewBox="0 0 7 7">
 				<path d="M7 0V5H2V0H7ZM3 4H6V1H3V4Z" />

@@ -2,12 +2,10 @@
 
 /* ------------------------------------------------------------
 
-見出し
+ボーダー
 
 ------------------------------------------------------------ */
 
-.heading01 {
-    letter-spacing: $ls-wide;
-    color: $color-text-secondary;
-    font-size: $fz-sm;
+.border01{
+    border: 1px solid $color-text-secondary;
 }

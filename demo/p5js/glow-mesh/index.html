@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no,address=no,email=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Glow Mesh Takumi Tanigawa Portfolio</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		canvas {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<main></main>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+	<script>
+		/* 1. 変数の定義 */
+		const NUM_POINTS = 500;
+		const MAX_LINE_DIST_START = 100; // 上限
+		const MIN_LINE_DIST = 30;        // 下限
+		const PULSE_PERIOD = 7;          // 減って→戻る までの秒数（=1周期）
+
+		const points = [];
+		let startTime = 0;
+
+		function setup() {
+			/* 2. キャンバスの初期化 */
+			createCanvas(640, 640);
+			background(0);
+			stroke(255, 100);
+			noFill();
+
+			/* 3. 点群の初期化 */
+			for (let i = 0; i < NUM_POINTS; i++) {
+				points.push({
+					x: random(width),
+					y: random(height),
+					vx: random(-1, 1),
+					vy: random(-1, 1),
+				});
+			}
+
+			startTime = millis();
+		}
+
+		function draw() {
+			background(0);
+
+			// 経過時間 t（秒）
+			const t = (millis() - startTime) / 1000;
+
+			// ---- 脈動（cosで上下）：s が 0..1 を往復 ----
+			// cos(0)=1 なので t=0 で最大（上限）から開始
+			const phase = TWO_PI * (t / PULSE_PERIOD);
+			const s = (cos(phase) + 1) * 0.5; // 1→0→1 を周期的に繰り返す
+
+			// 現在の距離しきい値
+			const currentMaxDist = lerp(MIN_LINE_DIST, MAX_LINE_DIST_START, s);
+
+			/* 4. 点群のアップデート + 描画 */
+			stroke(255, 160);
+			strokeWeight(2);
+			for (const p of points) {
+				p.x += p.vx;
+				p.y += p.vy;
+				if (p.x < 0 || p.x > width) p.vx *= -1;
+				if (p.y < 0 || p.y > height) p.vy *= -1;
+				point(p.x, p.y);
+			}
+
+			/* 5. 点を線で繋ぐ（しきい値が脈動） */
+			strokeWeight(1);
+			for (let i = 0; i < points.length; i++) {
+				for (let j = i + 1; j < points.length; j++) {
+					const d = dist(points[i].x, points[i].y, points[j].x, points[j].y);
+					if (d < currentMaxDist) {
+						// 距離が近いほど不透明、かつビートに合わせて全体も少しフェード
+						const baseA = map(d, 0, currentMaxDist, 180, 0);
+						const beatA = lerp(0.7, 1.0, s); // s=0で少し暗く、s=1で明るく
+						stroke(255, baseA * beatA);
+						line(points[i].x, points[i].y, points[j].x, points[j].y);
+					}
+				}
+			}
+
+			// しきい値の簡易表示（デバッグ用）
+			noStroke();
+			fill(255, 180);
+			textSize(12);
+			text(`maxDist: ${currentMaxDist.toFixed(1)}`, 10, height - 12);
+		}
+
+		function keyPressed() {
+			if (key === 'r' || key === 'R') {
+				startTime = millis(); // フェーズをリセット
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+@use "../global/" as *;
+
+/* ------------------------------------------------------------
+
+Sketch
+
+------------------------------------------------------------ */
+
+.sketchDetail {
+    display: flex;
+    flex-direction: column;
+    row-gap: $space-xxs;
+    position: relative;
+    font-size: $fz-jp-base;
+    color: $color-text-secondary;
+    padding-top: $space-xs;
+
+    &__note{
+        color: $color-text-secondary;
+        font-size: $fz-sm;
+    }
+}

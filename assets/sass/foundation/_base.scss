@@ -30,6 +30,7 @@ body {
 }
 
 #wrap-all {
+    position: relative;
     padding: $space-md;
     display: flex;
     flex-direction: column;

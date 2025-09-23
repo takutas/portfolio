@@ -1,29 +1,32 @@
+// DOMの読み込みが完了したらアコーディオンを初期化
 document.addEventListener("DOMContentLoaded", () => {
     setUpAccordion();
 });
 
-// 初期化：各 details/summary に動作をセット
 function setUpAccordion() {
+    // .js-details 要素をすべて取得
     const detailsList = document.querySelectorAll(".js-details");
-    const IS_OPENED_CLASS = "is-opened";
+    const IS_OPENED_CLASS = "is-opened"; // 開閉状態を示すクラス
 
+    // 各 <details> 要素ごとにイベントを設定
     detailsList.forEach((details) => {
-        const summary = details.querySelector(".js-summary");
-        const content = details.querySelector(".js-content");
+        const summary = details.querySelector(".js-summary"); // 開閉ボタン（summary）
+        const content = details.querySelector(".js-content"); // 中身（アニメ対象）
 
+        // summary クリック時の動作
         summary.addEventListener("click", (e) => {
-            e.preventDefault();
+            e.preventDefault(); // デフォルトの開閉挙動をキャンセル
 
-            // 連打ロック中は無視
+            // アニメーション中は操作無効化
             if (details.dataset.animating === "1") return;
 
             const isOpened = details.classList.contains(IS_OPENED_CLASS);
 
             if (isOpened) {
-                // 自分を閉じる
+                // すでに開いている場合 → 閉じる
                 closeOne(details, content);
             } else {
-                // 自分以外を全部閉じる
+                // 他の開いているアコーディオンを閉じる
                 detailsList.forEach((other) => {
                     if (other === details) return;
                     if (other.classList.contains(IS_OPENED_CLASS)) {
@@ -37,31 +40,35 @@ function setUpAccordion() {
         });
     });
 
-    // 1項目を閉じる：見た目クラスを外し→高さ/不透明度のアニメ→完了後にopen属性除去
+    // ===== 個別の開閉処理 =====
+
+    // 1つのアコーディオンを閉じる
     function closeOne(detailsEl, contentEl) {
-        detailsEl.dataset.animating = "1";
-        detailsEl.classList.remove("is-opened");
-        gsap.killTweensOf(contentEl); // 競合防止
+        detailsEl.dataset.animating = "1"; // アニメーション中フラグ
+        detailsEl.classList.remove("is-opened"); // 見た目クラスを外す
+        gsap.killTweensOf(contentEl); // 競合するアニメを止める
         closingAnim(contentEl, detailsEl).then(() => {
-            detailsEl.dataset.animating = "0";
+            detailsEl.dataset.animating = "0"; // アニメ完了で解除
         });
     }
 
-    // 1項目を開く：見た目クラス付与 & open属性付与→高さ/不透明度のアニメ
+    // 1つのアコーディオンを開く
     function openOne(detailsEl, contentEl) {
-        detailsEl.dataset.animating = "1";
-        detailsEl.classList.add("is-opened");
-        detailsEl.setAttribute("open", "true");
-        gsap.killTweensOf(contentEl); // 競合防止
+        detailsEl.dataset.animating = "1"; // アニメーション中フラグ
+        detailsEl.classList.add("is-opened"); // 見た目クラス付与
+        detailsEl.setAttribute("open", "true"); // open属性を付与
+        gsap.killTweensOf(contentEl); // 競合するアニメを止める
         openingAnim(contentEl).then(() => {
-            detailsEl.dataset.animating = "0";
+            detailsEl.dataset.animating = "0"; // アニメ完了で解除
         });
     }
 }
 
-// ===== GSAP アニメーション =====
+// ===== GSAP アニメーション部分 =====
 
-// 閉じるアニメ：0.4s、高さ→0 / 透明→0、完了後に open 属性を外す
+// 閉じるアニメーション
+// 高さを0に、透明度を0にする（0.4秒）
+// 終了後に open 属性を外す
 function closingAnim(content, detailsEl) {
     return new Promise((resolve) => {
         gsap.to(content, {
@@ -78,7 +85,8 @@ function closingAnim(content, detailsEl) {
     });
 }
 
-// 開くアニメ：0.4s、高さ 0→auto / 透明 0→1
+// 開くアニメーション
+// 高さ0→auto、透明度0→1にする（0.4秒）
 function openingAnim(content) {
     return new Promise((resolve) => {
         gsap.fromTo(

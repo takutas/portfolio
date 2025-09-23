@@ -122,6 +122,7 @@ body {
 }
 
 #wrap-all {
+  position: relative;
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
@@ -555,6 +556,7 @@ accordion01
 }
 .accordionGroup01 .accordionUnit__contents-inner {
   padding: 16px 0;
+  font-size: 13px;
 }
 .accordionGroup01 .icon {
   display: block;
@@ -624,6 +626,7 @@ accordion02
 }
 .accordionGroup02 .accordionUnit__contents-inner {
   padding: 16px 0;
+  font-size: 13px;
 }
 .accordionGroup02 .icon {
   position: relative;
@@ -708,6 +711,7 @@ accordion03
 .accordionGroup03 .contents {
   padding: 2rem;
   background-color: #f5f5f5;
+  font-size: 13px;
 }
 
 /* ------------------------------------------------------------
@@ -773,4 +777,5 @@ accordion04
 }
 .accordionGroup04 .contents__inner {
   padding: 2rem;
+  font-size: 13px;
 }/*# sourceMappingURL=accessible_ui.css.map */

@@ -5,17 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no,address=no,email=no">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<title>Works01 Takumi Tanigawa Portfolio</title>
+	<title>Shinjuku Creators Festa 2019 Takumi Tanigawa Portfolio</title>
 	<link rel="canonical" href="https://takutas.github.io/portfolio-site/works/work01.html" />
-	<meta name="description" content="Works01 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
+	<meta name="description" content="Shinjuku Creators Festa 2019 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
 	<!-- Open Graph -->
-	<meta property="og:title" content="Works01 Takumi Tanigawa Portfolio">
-	<meta property="og:description" content="Works01 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
+	<meta property="og:title" content="Shinjuku Creators Festa 2019 Takumi Tanigawa Portfolio">
+	<meta property="og:description" content="Shinjuku Creators Festa 2019 Takumi Tanigawa Front-end Developer Japan Ibaraki-Tsukuba">
 	<meta property="og:url" content="https://takutas.github.io/portfolio-site/works/work01.html">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Takumi Tanigawa Portfolio">
 	<meta property="og:locale" content="ja_JP">
-	<!-- <meta property="og:image" content="https://takutas.github.io/portfolio-site/assets/img/ogp.jpg"> -->
+	<meta property="og:image" content="https://takutas.github.io/portfolio-site/assets/img/ogp.jpg">
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@takumi00060421">
@@ -28,6 +28,7 @@
 		<header class="c-header">
 			<nav class="c-header__nav" aria-label="グローバルナビゲーション">
 				<ul>
+					<li><a class="linkTxt01" href="/portfolio/">Sketch</a></li>
 					<li>
 						<h1>Works</h1>
 					</li>
@@ -36,52 +37,64 @@
 								<use href="#ico_tab01"></use>
 							</svg></a></li>
 					<li><a class="linkTxt01" href="/portfolio/profile/">Profile</a></li>
-					<li><a class="linkTxt01" href="/portfolio/accessible_ui/">Accessible UI</a></li>
 				</ul>
 			</nav>
 			<p>&copy;Takumi.T 2025</p>
 		</header>
 
 		<main>
-			<div class="worksDetail">
-				<p class="backList">
-					<a href="/portfolio/">←View All</a>
-				</p>
-				<div class="pager">
-					<p><a href="work02.html">←Prev</a></p>
-					<p class="disabled">Next→</p>
-				</div>
-				<video class="worksDetail__video" autoplay muted loop playsinline>
-					<source src="/portfolio/assets/video/work01.webm?v3" type="video/webm">
-					Your browser does not support the video tag.
-				</video>
-				<h2>Scroll-Triggered Scatter Effect with GSAP</h2>
-				<div class="worksDetail__desc">
-					<p>スクロールに応じた文字の飛散アニメーションをGSAPとScrollTriggerで実装。<br>
-						「重さ」「慣性」「反発」を視覚的に表現し、インタラクションと自然な動きの両立を目指しました。<br>
-						特定の文字（T・T）のみに質量とバウンド感を与えることで、個別の物理感を演出しています。</p>
-					<p>動きの数値設計や微調整に関しては、生成AIとの対話を通して検証・調整を重ねながら、<br>
-						言語ベースで「理想の動き」を試行錯誤し、納得のいく表現に落とし込みました。</p>
-				</div>
-				<div class="worksDetail__info">
-					<div>
-						<h3 class="heading01">Feature Tech</h3>
-						<p>GSAP</p>
+			<div class="worksDetail" id="work01">
+				<div class="worksDetail__txtWrapper">
+					<div class="pager">
+						<p><a href="work02.html">←Prev</a></p>
+						<p class="disabled">Next→</p>
 					</div>
-					<div>
-						<p>#HTML, #CSS, #JavaScript, #GSAP, #ScrollTrigger, #Motion Design, #Micro Interaction</p>
+					<h2>句集 「翠色の香水瓶」</h2>
+					<div class="worksDetail__desc">
+						<p>句集『翠色の香水瓶』（著：尾上翠）の装丁を担当しました。<br>イラストとタイトルが想起させる佇まいを損なわず、あるべき姿を引き立てるデザインを意識しました。</p>
+					</div>
+					<div class="worksDetail__info">
+						<div>
+							<h3 class="heading01">Tool</h3>
+							<p>Photoshop</p>
+						</div>
+						<div>
+							<h3 class="heading01">Category</h3>
+							<p>BookDesign</p>
+						</div>
+						<div>
+							<h3 class="heading01">Illustration</h3>
+							<p>Osamu Masuda</p>
+						</div>
+						<div>
+							<h3 class="heading01">Creation year</h3>
+							<p>2019</p>
+						</div>
+					</div>
+					<!-- <p class="worksDetail__note"></p> -->
+					<p class="backList">
+						<a href="/portfolio/works/">←View All</a>
+					</p>
+				</div>
+				<div class="worksDetail__imageWrapper">
+					<div class="worksDetail__imageItem">
+						<img src="../assets/img/work01_01.webp" alt="" width="1400" height="1400" loading="lazy">
+					</div>
+					<div class="worksDetail__imageItem">
+						<img src="../assets/img/work01_02.webp" alt="" width="1400" height="990" loading="lazy">
+					</div>
+					<div class="worksDetail__imageItem">
+						<img src="../assets/img/work01_03.webp" alt="" width="1400" height="934" loading="lazy">
 					</div>
 				</div>
-				<p class="worksDetail__external">
-					<a href="../demo/shatter/" target="_blank">Demo Syte</a>
-				</p>
 			</div>
 		</main>
 
 		<footer class="c-footer" id="footer">
 			<nav class="c-footer__nav" aria-label="SNS">
 				<ul>
-					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X (twitter)</a>
+					<li><a class="linkTxt01" href="https://x.com/takumi00060421" target="_blank" rel="noopener">X
+							(twitter)</a>
 					</li>
 				</ul>
 			</nav>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Animation2</title>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+  <link href="/portfolio/assets/css/style.min.css" media="all" rel="stylesheet">
+  <style>
+    body {
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Courier New", "M PLUS 1p", monospace;
+    }
+
+    #text {
+      width: 300px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+
+    .txt-rotate>.wrap {
+      border-right: 0.08em solid #666;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="text">
+    <p>
+      I am
+      <span
+        class="txt-rotate"
+        data-period="2000"
+        data-rotate='[ "Coder?", "Designer?", "Developer?" ]'></span>
+    </p>
+  </div>
+
+  <script>
+  class TxtRotate {
+    constructor(el, toRotate, period) {
+      this.el = el;
+      this.toRotate = toRotate;
+      this.period = parseInt(period, 10) || 2000;
+      this.loopNum = 0;
+      this.txt = '';
+      this.isDeleting = false;
+      this.tick();
+    }
+
+    tick() {
+      const i = this.loopNum % this.toRotate.length;
+      const fullTxt = this.toRotate[i];
+
+      // 入力中 or 削除中の処理
+      this.txt = this.isDeleting
+        ? fullTxt.substring(0, this.txt.length - 1)
+        : fullTxt.substring(0, this.txt.length + 1);
+
+      this.el.innerHTML = `<span class="wrap">${this.txt}</span>`;
+
+      let delta;
+      if (this.isDeleting) {
+        // 削除は速く
+        delta = 40 + Math.random() * 40; 
+      } else {
+        // 波揺らぎ（ゆったりタイピング）
+        const base = 250;
+        const wave = Math.sin(Date.now() / 200) * 120;
+        delta = Math.max(50, base + wave);
+      }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;   // フル表示の待機
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500; // 次の文字に移るまでの休止
+      }
+
+      setTimeout(() => this.tick(), delta);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.txt-rotate').forEach(el => {
+      const toRotate = el.dataset.rotate;
+      const period = el.dataset.period;
+      if (toRotate) {
+        new TxtRotate(el, JSON.parse(toRotate), period);
+      }
+    });
+
+    // CSSを動的に追加
+    const style = document.createElement("style");
+    style.textContent = `.txt-rotate > .wrap { border-right: 0.08em solid #666 }`;
+    document.head.appendChild(style);
+  });
+  </script>
+
+</body>
+
+</html>
