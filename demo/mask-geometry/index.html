@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>mask-geometry</title>
+  <link href="/portfolio/assets/css/style.min.css" media="all" rel="stylesheet">
+  <style>
+    .geometricMaskWrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .geometricMaskBg {
+      width: 100%;
+      height: 100%;
+      background-color: #282828;
+    }
+
+    .geometricMask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #7c7c7c;
+      mask-image: linear-gradient(135deg, transparent 40%, #000 55%, #000 50%, transparent 50%), linear-gradient(45deg, transparent 50%, #000 51%, #000 49%, transparent 50%);
+      mask-composite: exclude;
+      mask-position: center;
+      mask-size: 80px 80px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="geometricMaskWrapper">
+    <div class="geometricMaskBg"></div>
+    <div class="geometricMask"></div>
+  </section>
+
+</body>
+
+</html>
