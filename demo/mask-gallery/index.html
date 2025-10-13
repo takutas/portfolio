@@ -38,11 +38,11 @@
 .sprite-container img.active {
   z-index: 2;
   opacity: 1;
-  animation: sprite-animation 3s steps(29) forwards;
-  mask-image: url("css_sprites.png");
+  animation: sprite-animation 1.6s steps(32) forwards;
+  mask-image: url("css_sprites.webp");
   mask-repeat: no-repeat;
   mask-position: 0 0;
-  -webkit-mask-image: url("css_sprites.png");
+  -webkit-mask-image: url("css_sprites.webp");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: 0 0;
 }
@@ -50,13 +50,13 @@
 /* 一つ前の画像（マスクは完全に抜けた状態） */
 .sprite-container img.prev {
   z-index: 1;
-  mask-image: url("css_sprites.png");
-  -webkit-mask-image: url("css_sprites.png");
+  mask-image: url("css_sprites.webp");
+  -webkit-mask-image: url("css_sprites.webp");
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   /* 最終位置でマスクを固定（“抜けた”状態） */
-  mask-position: calc(-14395px + 480px) 0;
-  -webkit-mask-position: calc(-14395px + 480px) 0;
+  mask-position: calc(-15835px + 480px) 0;
+  -webkit-mask-position: calc(-15835px + 480px) 0;
   transition: opacity 1s ease-in-out;
 }
 
@@ -67,8 +67,8 @@
     -webkit-mask-position: 0 0;
   }
   100% {
-    mask-position: calc(-14395px + 480px) 0;
-    -webkit-mask-position: calc(-14395px + 480px) 0;
+    mask-position: calc(-15835px + 480px) 0;
+    -webkit-mask-position: calc(-15835px + 480px) 0;
   }
 }
   </style>
@@ -103,14 +103,14 @@
       // 次の画像を active にしてアニメ開始
       nextImage.classList.add('active');
 
-      // 一定時間後に prev クラスを除去（完全に消えた後）
+      // 一定時間後に prev クラスを除去
       setTimeout(() => {
         currentImage.classList.remove('prev');
-      }, 2000); // フェード時間＋マスク余韻（好みに調整）
+      }, 2000); 
     }
 
-    // 5秒ごとに切り替え
-    setInterval(switchImage, 4500);
+    // 4秒ごとに切り替え
+    setInterval(switchImage, 4000);
 </script>
 
 </html>
