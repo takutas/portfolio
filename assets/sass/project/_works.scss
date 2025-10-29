@@ -16,15 +16,26 @@ Works
     }
 
     &__item {
-        border-bottom: 1px solid $color-text-secondary;     
+        border-bottom: 1px solid #c9c9c9;     
 
         &:nth-of-type(odd){
-            border-right: 1px solid $color-text-secondary;
+            border-right: 1px solid #c9c9c9;
+
+            @include mq767{
+                border-right: none;
+            }
         }
 
-        &:nth-of-type(1),
+        &:nth-of-type(1){
+            border-top: 1px solid #c9c9c9;
+        }
+
         &:nth-of-type(2){
-            border-top: 1px solid $color-text-secondary;
+            border-top: 1px solid #c9c9c9;
+
+            @include mq767{
+                border-top: none;
+            }
         }
 
         a{
@@ -45,6 +56,22 @@ Works
             height: 100%;
             object-fit: contain;
             object-position: top;
+        }
+    }
+
+    &__area{
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+        color: $color-text-secondary;
+        font-size: $fz-sm;
+
+        &::before{
+            content: "";
+            display: block;
+            background-color: $color-text-primary;
+            width: 2rem;
+            height: 1px;
         }
     }
 
@@ -114,8 +141,8 @@ Works
             content: "";
             display: block;
             background-color: $color-text-primary;
-            width: 1.6rem;
-            height: 0.1rem;
+            width: 2rem;
+            height: 1px;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -133,8 +160,8 @@ Works
             content: "";
             display: block;
             background-color: $color-text-primary;
-            width: 1.6rem;
-            height: 0.1rem;
+            width: 2rem;
+            height: 1px;
             position: absolute;
             bottom: 0;
             left: 0;
